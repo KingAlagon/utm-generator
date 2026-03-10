@@ -602,7 +602,7 @@
 
 <script>
   const fields = ['baseUrl','source','medium','campaign','content','term'];
-  let history = JSON.parse(localStorage.getItem('utm_history') || '[]');
+  let history = [];
   let currentUrl = '';
 
   // Bind inputs
@@ -680,7 +680,6 @@
   function saveHistory(url) {
     if (!url || history[0] === url) return;
     history = [url, ...history.filter(u => u !== url)].slice(0, 20);
-    localStorage.setItem('utm_history', JSON.stringify(history));
     renderHistory();
   }
 
